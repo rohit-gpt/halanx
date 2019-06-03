@@ -1,0 +1,35 @@
+.row1 {
+	width: 50%;
+	float: left;
+	font-weight: bold;
+	padding: 2%;
+}
+
+#typeCircle {
+	background-color: red;
+	color: white;
+	font-weight: bold;
+	padding: 2%;
+	border-radius: 32px;
+	text-align: center;
+}
+
+.localityDiv {
+	padding: 2%;
+	margin-top: 10%;
+	font-size: 0.9em;
+}
+
+table {
+	width: 100%;
+	margin: 2%;
+	font-size: 0.7em;
+}
+
+td {
+	width: 33%;
+}
+
+#clickMeId {
+	width: 100%;
+}

@@ -1,0 +1,40 @@
+<% include partials/header.ejs %>
+
+<style type="text/css">
+	input {
+		width: 100%;
+		height: 5vh;
+		margin-top: 2%;
+		padding: 2vh;
+		border-radius: 24px;
+		outline: none;
+	}
+
+	input:focus {
+		border-color:red;
+	}
+
+
+</style>
+
+<div style="padding: 5%;">
+	
+	<form action="/users/<%= user._id %>/place" method="POST">
+		<input type="text" name="image" placeholder="Image" required>
+		<input type="number" name="size" placeholder="?? BHK" required>
+		<input type="number" name="rent" placeholder="Rent Starting From" required>
+		<input type="number" name="security" placeholder="Minimum Security Required" required>
+		<input type="radio" style="width: 2%;"  name="type" value="Shared Room" checked>Shared Room
+		<input type="radio" style="width: 2%;" name="type" value="Private Room">Private Room
+		<input type="radio" style="width: 2%;" name="type" value="Full House">Full House
+		<input type="text" name="locality" paceholder="Locality" placeholder="Locality" required>
+		<input type="number" name="area" placeholder="Area(in sq ft)" required>
+		<input type="number" name="beds" placeholder="Number of beds"required>
+		<input type="text" name="openingTime" placeholder="Opening Hours of place" required>
+		<input type="submit" value="Create Place">
+	</form>
+
+</div>
+
+</body>
+</html>

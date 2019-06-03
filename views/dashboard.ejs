@@ -1,0 +1,29 @@
+<% include partials/header.ejs %>
+
+
+	<div style="margin:2%;">
+		Welcome, <%= user.username %>
+		<hr>
+		<table style="font-size: 1.2em; text-align: center;">
+			<tr>
+				<td><a class="btn btn-lg btn-warning" href="/users/<%= user._id %>/newplace">Add A Place</a></td>
+				<td><a class="btn btn-lg btn-info" href="/">Edit A Place</a></td>
+			</tr>
+		</table>
+	</div>
+
+	<center>
+	<table style="font-size: 1.1em; border: 1px solid black; width: 60%;">
+		<% user.places.forEach(function(place) { %>
+
+			<tr>
+				<td style="padding: 2%; border: 1px solid black; text-align: center"><%= place.size %> BHK - <%= place.locality %></td>
+				<td style="text-align: center"><a class="btn btn-sm btn-secondary" href="/users/<%= currentUser._id %>/places/<%= place._id %>/plot">Show Date vs. Count Plot</a></td>
+			</tr>
+
+		<% }) %>
+	</table>
+	</center>
+
+</body>
+</html>

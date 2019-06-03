@@ -1,0 +1,117 @@
+<% include partials/header.ejs %>
+
+	<div style="margin: 2%;">
+
+		<div class="row">
+
+			<% if(places[0]) { %>
+
+				<div class="col-lg-4 co-md-6 col-sm-12">
+					
+					<img src="<%= places[0].image %>" style="width: 100%; height: 40%;">
+					<div style="padding: 4%;">
+						
+						<div class="row1"><%= places[0].size %> BHK</div>
+						<div class="row1" id="typeCircle"><%= places[0].type %></div>
+
+						<div class="localityDiv">
+							<%= places[0].locality %>
+						</div>
+
+						<div>
+							<table>
+								<tr>
+									<td>Fully Furnished</td>
+									<td style="text-align: center; border-right: 1px solid black; border-left:1px solid black;"><%= places[0].area %> Sq. Ft.</td>
+									<td style="text-align: right; padding-right: 4%;"><%= places[0].beds %> Bed(s) available</td>
+								</tr>
+							</table>
+						</div>
+
+						<div class="row1">Rent Starts From <br> <%= places[0].rent %></div>
+						<div class="row1" style="text-align: right;">Security Deposit <br> <%= places[0].security %></div>
+
+						<% if(currentUser) { %>
+							<a href="/users/<%= currentUser._id %>/places/<%= places[0]._id %>/edit" id="clickMeId" class="btn btn-info">Edit Place</a>
+						<% } else { %>
+							<button id="clickMeId" onclick="show('comment')" class="btn btn-warning">Schedule a Visit</button>
+						<% } %>
+
+						<div id="comment" style="margin: 2%; text-align: center; display: none;">
+							<form action="/places/<%= places[0]._id %>/schedule" method="POST">
+								<input type="date" name="date" placeholder="Select Date" required>
+								<button class="btn btn-primary">Schedule</button>
+							</form>
+						</div>
+
+					</div>
+
+				</div>
+
+			<% } %>
+
+			<% for(var i=1; i < places.length ; i++) { %>
+
+				<% if(i%3 == 0) { %>
+					</div>
+					<div class="row">
+				<% } %>
+				
+				<div class="col-lg-4 co-md-6 col-sm-12">
+					
+					<img src="<%= places[i].image %>" style="width: 100%; height: 40%;">
+					<div style="padding: 4%;">
+						
+						<div class="row1"><%= places[i].size %> BHK</div>
+						<div class="row1" id="typeCircle"><%= places[i].type %></div>
+
+						<div class="localityDiv">
+							<%= places[i].locality %>
+						</div>
+
+						<div>
+							<table>
+								<tr>
+									<td>Fully Furnished</td>
+									<td style="text-align: center; border-right: 1px solid black; border-left:1px solid black;"><%= places[i].area %> Sq. Ft.</td>
+									<td style="text-align: right; padding-right: 4%;"><%= places[i].beds %> Bed(s) available</td>
+								</tr>
+							</table>
+						</div>
+
+						<div class="row1">Rent Starts From <br> <%= places[i].rent %></div>
+						<div class="row1" style="text-align: right;">Security Deposit <br> <%= places[i].security %></div>
+
+						<% if(currentUser) { %>
+							<a href="/users/<%= currentUser._id %>/places/<%= places[i]._id %>/edit" id="clickMeId" class="btn btn-info">Edit Place</a>
+						<% } else { %>
+							<button id="clickMeId" onclick="show('comment')" class="btn btn-warning">Schedule a Visit</button>
+						<% } %>
+
+						<div id="comment" style="margin: 2%; text-align: center; display: none;">
+							<form action="/places/<%= places[i]._id %>/schedule" method="POST">
+								<input type="date" name="date" placeholder="Select Date" required>
+								<button class="btn btn-primary">Schedule</button>
+							</form>
+						</div>
+
+					</div>
+
+				</div>
+
+			<% } %>
+	</div>
+
+	<script type="text/javascript">
+		function show(target){
+document.getElementById(target).style.display = 'block';
+document.getElementById("clickMeId").style.display = 'none';
+}
+function hide(target){
+document.getElementById(target).style.display = 'none';
+document.getElementById("clickMeId").style.display = 'block';
+}
+	</script>
+
+</body>
+</html>
